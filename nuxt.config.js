@@ -23,6 +23,10 @@ export default {
   css: [
     './assets/main.scss'
   ],
+  server:{
+port:4000,
+host:'0.0.0.0'
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

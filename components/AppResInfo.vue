@@ -1,6 +1,6 @@
 <template>
   <section class="resinfo">
-    <div v-for="store in fooddata" :key="store.id" class="item">
+    <div v-for="store in datasource" :key="store.id" class="item">
       <h2>{{ store.name }}</h2>
       <div class="row">
         <p class="d-btn d-btn-success col-2">
@@ -20,11 +20,20 @@
           :style="`background:url(${menuitem.img}) no-repeat center center`"
         >
           <div class="iteminfo">
-            <div class="item">
+            <div class="item col-4">
               <h4>{{ menuitem.item }}</h4>
               <p>{{ menuitem.price }}</p>
             </div>
-            <button class="d-btn d-btn-primary col-2">详情</button>
+            <div class="col-6">
+              <nuxt-link :to="`/items/${menuitem.id}`">
+                <button class="d-btn d-btn-primary col-3">查看</button>
+              </nuxt-link>
+              <nuxt-link :to="`/items/${menuitem.id}`"
+                ><button class="d-btn d-btn-primary col-3">
+                  详情
+                </button></nuxt-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -33,11 +42,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-  computed: {
-    ...mapState(['fooddata'])
+  props: {
+    datasource: {
+      type: [Array, Object]
+    }
   }
 }
 </script>
